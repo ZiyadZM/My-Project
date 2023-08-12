@@ -1,58 +1,44 @@
-# This function adds two numbers
-def add(x, y):
-    return x + y
+import random
+import math
+# Taking Inputs
+lower = int(input("Enter Lower bound:- "))
 
-#hmuhgmunm5g5g5555ouhgmuhtuhmf5t555g5g
-# This function subtracts two numbers
-def subtract(x, y):
-    return x - y
+# Taking Inputs
+upper = int(input("Enter Upper bound:- "))
 
+# generating random number between
+# the lower and upper
+x = random.randint(lower, upper)
+print("\n\tYou've only ",
+	round(math.log(upper - lower + 1, 2)),
+	" chances to guess the integer!\n")
 
-# This function multiplies two numbers
-def multiply(x, y):
-    return x * y
+# Initializing the number of guesses.
+count = 0
 
+# for calculation of minimum number of
+# guesses depends upon range
+while count < math.log(upper - lower + 1, 2):
+	count += 1
 
-# This function divides two numbers
-def divide(x, y):
-    return x / y
+	# taking guessing number as input
+	guess = int(input("Guess a number:- "))
 
+	# Condition testing
+	if x == guess:
+		print("Congratulations you did it in ",
+			count, " try")
+		# Once guessed, loop will break
+		break
+	elif x > guess:
+		print("You guessed too small!")
+	elif x < guess:
+		print("You Guessed too high!")
 
-print("Select operation.")
-print("1.Add")
-print("2.Subtract")
-print("3.Multiply")
-print("4.Divide")
+# If Guessing is more than required guesses,
+# shows this output.
+if count >= math.log(upper - lower + 1, 2):
+	print("\nThe number is %d" % x)
+	print("\tBetter Luck Next time!")
 
-while True:
-    # take input from the user
-    choice = input("Enter choice(1/2/3/4): ")
-
-    # check if choice is one of the four options
-    if choice in ('1', '2', '3', '4'):
-        try:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-            continue
-
-        if choice == '1':
-            print(num1, "+", num2, "=", add(num1, num2))
-
-        elif choice == '2':
-            print(num1, "-", num2, "=", subtract(num1, num2))
-
-        elif choice == '3':
-            print(num1, "*", num2, "=", multiply(num1, num2))
-
-        elif choice == '4':
-            print(num1, "/", num2, "=", divide(num1, num2))
-
-        # check if user wants another calculation
-        # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
-            break
-    else:
-        print("Invalid Input")
+# Better to use This source Code on pycharm!
